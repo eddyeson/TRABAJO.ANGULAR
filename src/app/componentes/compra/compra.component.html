@@ -1,0 +1,7 @@
+
+<ul>
+    <li *ngFor="let compra of this.carrito | keyvalue">
+        {{compra.key}} -> {{compra.value}}
+    </li>
+</ul>
+<button (click)="this.comprar()">comprar</button>

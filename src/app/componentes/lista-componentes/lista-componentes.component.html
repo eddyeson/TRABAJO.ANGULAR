@@ -1,0 +1,33 @@
+<div class="conteiner">
+    <div class="row">
+        <div class="col 8" >lista de componentes 
+        <table *ngFor= "let grafica of graficas " [ngClass]= "{'clearence': grafica.clearence}" > 
+            <tr>
+                <td>nombre: {{grafica.nombre}}</td>
+            </tr>  
+            <tr>
+                <td>precio: {{grafica.price}}</td>
+            </tr>
+            <tr> 
+                <td>ram: {{grafica.ram}}</td>
+            </tr>
+            <tr>
+                <td *ngIf= "grafica.stock == 0; else elseblock "> sin stock</td>  
+                <ng-template #elseblock>
+                    stock: {{grafica.stock}}
+                </ng-template>
+            </tr> 
+            <tr>
+                <button (click)="agregaralcarrito(grafica)">agregar al carrito</button>
+            </tr> 
+        </table> 
+        <button (click)="comprar()">comprar</button>
+    </div> 
+    <div class="col 4">carrito de compras>
+        <ul>
+            <li *ngFor="let compra of this.servicecarrito.getcarrito() | keyvalue">
+                {{compra.key}} -> {{compra.value}}
+            </li>
+        </ul>
+    </div>
+</div>
